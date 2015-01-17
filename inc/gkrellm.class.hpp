@@ -46,7 +46,7 @@
 #define BOLDCYAN    "\033[1m\033[36m"
 #define BOLDWHITE   "\033[1m\033[37m"
 
-class Gkrellm {
+class Gkrellm{
 
 public:
 	Gkrellm();
@@ -58,6 +58,11 @@ public:
 
 private:
 	std::string _name;
+	u_int getTotalRamAvailable();
+	void getRamCurrentlyUser();
+	u_int getAvailableCore();
+	std::string dateData();
+
 
 };
 
