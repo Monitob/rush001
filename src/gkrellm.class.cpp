@@ -10,16 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "../inc/gkrellm.class.hpp"
+#include <iostream>
+#include "gkrellm.class.hpp"
 
 Gkrellm::Gkrellm(){
-
+  this->setName();
 }
-
-  Gkrellm::Gkrellm(std::string name){
-    setName(name);
-  }
 
 Gkrellm::Gkrellm(Gkrellm const & src){
     *this = src;
@@ -35,9 +31,23 @@ Gkrellm & Gkrellm::operator=(Gkrellm const& f){
 }
 
 std::string Gkrellm::getName() const{
-  return _name;
+  return this->_name;
 }
 
-void Gkrellm::setName(std::string name){
-  this->_name = name;
+void Gkrellm::setName(){
+  #ifdef _WIN32
+  _name = "Windows 32-bit";
+  #elif _WIN64
+  _name = "Windows 64-bit";
+  #elif __unix || __unix__
+  _name = "Unix";
+  #elif __APPLE__ || __MACH__
+  _name = "Mac OSX";
+  #elif __linux__
+  reutnr "Linux";
+  #elif __FreeBSD__
+  _name = "FreeBSD";
+  #else
+  _name = "Other";
+  #endif
 }

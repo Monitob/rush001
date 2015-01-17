@@ -10,9 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include "../inc/gkrellm.class.hpp"
 
 int main(){
 
+  Gkrellm* a = new Gkrellm ();
+  std::cout << a->getName() << std::endl;
+  delete a;
   return (0);
-
 }

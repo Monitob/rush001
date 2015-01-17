@@ -5,7 +5,7 @@ HEADER	= ./inc/
 SRCDIR	= ./src/
 OBJDIR	= ./obj/
 CFLAGS	= -Wall -Wextra -Werror -I$(HEADER)
-SRC			= $(SRCDIR)main.cpp
+SRC			= $(SRCDIR)main.cpp gkrellm.class.cpp
 OBJ			= $(addprefix $(OBJDIR),$(notdir $(SRC:.cpp=.o)))
 
 all:			$(NAME)
