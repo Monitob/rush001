@@ -13,23 +13,21 @@
 #ifndef GKRELLM_CLASS_HPP
 #define GKRELLM_CLASS_HPP
 
+#include <vector>
 #include <iostream>
 
 class Gkrellm {
 
 public:
-	Gkrellm(std::string name);
+	Gkrellm();
+	Gkrellm(Gkrellm const &  src);
 	std::string getName() const;
-	void setName(std::string name);
-
+	Gkrellm & operator=(Gkrellm const & f);
+	void setName();
+	virtual ~Gkrellm();
 
 private:
 	std::string _name;
-
-	Gkrellm();
-	Gkrellm(Gkrellm const &  src);
-	~Gkrellm();
-	Gkrellm & operator=(Gkrellm const & f);
 
 };
 
