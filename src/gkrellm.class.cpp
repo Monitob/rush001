@@ -11,10 +11,22 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include <exception>
 #include "gkrellm.class.hpp"
 
+struct utsname unameData;
+
+
 Gkrellm::Gkrellm(){
+  uname(&unameData);
   this->setName();
+
+  std::cout << GREEN << "Welcome to the Gkrellm. Best version 2.0.0.3000!" << RESET << std::endl;
+  std::cout << "system name:" << unameData.sysname << std::endl;
+  std::cout << "node name   :"<< unameData.nodename << std::endl;
+  std::cout << "release    :" << unameData.release << std::endl;
+  std::cout << "version    :" << unameData.version << std::endl;
+  std::cout << "machine    :" << unameData.machine << std::endl;
 }
 
 Gkrellm::Gkrellm(Gkrellm const & src){
