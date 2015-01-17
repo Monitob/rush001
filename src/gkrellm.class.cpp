@@ -3,43 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   gkrellm.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbernabe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 12:37:25 by jbernabe          #+#    #+#             */
-/*   Updated: 2015/01/17 12:37:30 by jbernabe         ###   ########.fr       */
+/*   Updated: 2015/01/17 14:30:33 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../inc/gkrellm.class.hpp"
 
+Gkrellm::Gkrellm(){
 
-  GKrellm::Gkrellm(){
+}
 
-  }
-
-  GKrellm::Gkrellm(std::string name){
+  Gkrellm::Gkrellm(std::string name){
     setName(name);
   }
 
-  GKrellm::Gkrellm(GKrellm & const src){
+Gkrellm::Gkrellm(Gkrellm const & src){
     *this = src;
-  }
+}
 
-  GKrellm::~Gkrellm(){
-    
-  }
+Gkrellm::~Gkrellm(){
+}
 
-  Gkrellm & GKrellm::operator=(Gkrellm & f){
+Gkrellm & Gkrellm::operator=(Gkrellm const& f){
 
-    this->_name = f.getName();
-    return (*this;)
-  }
+  this->_name = f.getName();
+  return (*this);
+}
 
-  std::string GKrellm::getName(){
-    return _name;
-  }
+std::string Gkrellm::getName() const{
+  return _name;
+}
 
-  void GKrellm::setName(std::string name){
-    _name = name
-  }
+void Gkrellm::setName(std::string name){
+  this->_name = name;
+}
