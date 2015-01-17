@@ -6,16 +6,16 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 15:50:25 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/17 17:21:51 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/17 18:35:34 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_CLOCK_CLASS_HPP
 #define GET_CLOCK_CLASS_HPP
 
-#include "IMonitorModule.class.hpp"
+#include "Module.class.hpp"
 
-class Get_clock: public IMonitorModule
+class Get_clock: public Module
 {
 public:
 	Get_clock();
