@@ -21,16 +21,17 @@ GraphicDisplay::GraphicDisplay(): init_suc(true), y(100)
 {
 
 }
-/*
+
 GraphicDisplay::GraphicDisplay(GraphicDisplay const &instance)
 {
-
+	*this = instance;
 }
 
 GraphicDisplay& GraphicDisplay::operator=(GraphicDisplay const &rhs)
 {
+	(void)rhs;
 	return *this;
-}*/
+}
 
 GraphicDisplay::~GraphicDisplay()
 {

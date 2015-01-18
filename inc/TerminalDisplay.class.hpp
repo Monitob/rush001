@@ -23,8 +23,9 @@ class	TerminalDisplay: public IMonitorDisplay
 {
 public:
 	TerminalDisplay();
-	/*TerminalDisplay(TerminalDisplay const &);
-	TerminalDisplay& operator=(TerminalDisplay const &);*/
+	TerminalDisplay(TerminalDisplay const &);
+	TerminalDisplay(std::string Sysname, std::string Nodename, std::string sys, int core);
+	TerminalDisplay& operator=(TerminalDisplay const &);
 	~TerminalDisplay();
 	virtual void	init();
 	virtual void	destroy();

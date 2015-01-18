@@ -23,8 +23,8 @@ class	GraphicDisplay: public IMonitorDisplay
 {
 public:
 	GraphicDisplay();
-	/*GraphicDisplay(GraphicDisplay const &);
-	GraphicDisplay& operator=(GraphicDisplay const &);*/
+	GraphicDisplay(GraphicDisplay const &);
+	GraphicDisplay& operator=(GraphicDisplay const &);
 	~GraphicDisplay();
 	virtual void	init();
 	virtual void	destroy();

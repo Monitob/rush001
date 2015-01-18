@@ -22,7 +22,23 @@ TerminalDisplay::TerminalDisplay(): is_init(false), _y(5),
 									_Sysname("Darwin"), _Nodename("e3r10p21.42.fr"), _sys("MAC OSX")
 									, _nb_core(4), _clock(new Get_clock())
 {
-	this->_clock->get_value();
+}
+
+TerminalDisplay::TerminalDisplay(std::string Sysname, std::string Nodename, std::string sys, int core): is_init(false), _y(5),
+									_Sysname(Sysname), _Nodename(Nodename), _sys(sys)
+									, _nb_core(core), _clock(new Get_clock())
+{
+}
+
+TerminalDisplay::TerminalDisplay(TerminalDisplay const &instance)
+{
+	*this = instance;
+}
+
+TerminalDisplay& TerminalDisplay::operator=(TerminalDisplay const &rhs)
+{
+	(void)rhs;
+	return *this;
 }
 
 TerminalDisplay::~TerminalDisplay()
