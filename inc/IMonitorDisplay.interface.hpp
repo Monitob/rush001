@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMonitorDisplay.class.hpp                          :+:      :+:    :+:   */
+/*   IMonitorDisplay.interface.hpp                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 17:25:46 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/17 17:49:40 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 07:08:27 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef IMONITORDISPLAY_INTERFACE_HPP
+# define IMONITORDISPLAY_INTERFACE_HPP
+
+# include "IMonitorModule.interface.hpp"
+
 class	IMonitorDisplay
 {
-public:
+public:/*
 	IMonitorDisplay();
 	IMonitorDisplay(IMonitorDisplay const &);
 	IMonitorDisplay(bool graphic_on);
 	IMonitorDisplay& operator=(IMonitorDisplay const &);
-	~IMonitorDisplay();
-	void init();
-	void destroy();
-
+	~IMonitorDisplay();*/
+	virtual void	init() = 0;
+	virtual void	destroy() = 0;
+	virtual void	refresh_data() = 0;
+	virtual void	refresh() = 0;
+	virtual void	get_data(IMonitorModule *src) = 0;
+	virtual void	print_data() = 0;
+	virtual void	print_sliders() = 0;
+/*
 private:
-	bool	_graphic_on;
+	bool	_graphic_on;*/
 };
+
+#endif /* !IMONITORDISPLAY_INTERFACE_HPP */

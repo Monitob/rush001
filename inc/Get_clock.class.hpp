@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 15:50:25 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/17 18:35:34 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 05:57:46 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ class Get_clock: public Module
 {
 public:
 	Get_clock();
+	Get_clock(int min, int max, int value);
 	virtual ~Get_clock();
 	virtual void get_value() {
-		//recurere l'heure
-		this->_data = 42;
+		this->store_int(2500);
+		this->_name = "clock";
+		this->set_R_value("M");
+		this->set_L_value("toto");
 	};
 };
 
