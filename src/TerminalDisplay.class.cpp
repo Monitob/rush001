@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 20:05:19 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 22:30:08 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 23:09:12 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,10 @@ void TerminalDisplay::print_data(){
 			}
 			mvwaddstr(this->win, this->_y, x, toto->get_name().c_str());
 			mvwaddstr(this->win, this->_y + 1, xy, value_to_print.str().c_str());
+			for (unsigned int i = value_to_print.str().size(); i < toto->get_name().size(); i++)
+			{
+				mvwaddch(this->win, this->_y + 1 , xy + i, ' ');
+			}
 			if (toto->is_LR_value())
 			{
 				if (toto->get_R_value().size() != 0)
