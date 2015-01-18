@@ -29,8 +29,21 @@ RamModule & RamModule::operator=(RamModule const & src){
 
 void RamModule::get_value(){
 	store_int(this->getRamCurrentlyUser());
-	std::cout << this->get_data() << std::endl;
 }
+
+template <class T>
+std::string numTostr(const T& num, unsigned int prec = 12) {
+  std::string ret;
+  std::stringstream ss;
+  std::ios_base::fmtflags ff = ss.flags();
+  ff |= std::ios_base::floatfield;
+  ff |= std::ios_base::fixed;
+  ss.flags(ff);
+  ss.precision(prec);
+  ss << num;
+  ret = ss.str();
+  return ret;
+};
 
 int RamModule::getRamCurrentlyUser(){
   /*
@@ -45,18 +58,27 @@ int RamModule::getRamCurrentlyUser(){
 
   mach_port = mach_host_self();
   count = sizeof(vm_stats) / sizeof(natural_t);
-  /*
-  * Warning!: Nasty code.
-  */
-  if (
-    KERN_SUCCESS == host_page_size(mach_port, &page_size)
-    && KERN_SUCCESS == host_statistics64(mach_port, HOST_VM_INFO, (host_info64_t)&vm_stats, &count)
-    )
+  int mib[2] = { CTL_HW, HW_MEMSIZE };
+  u_int namelen = sizeof(mib) / sizeof(mib[0]);
+  uint64_t size;
+  size_t len = sizeof(size);
+
+  if (sysctl(mib, namelen, &size, &len, NULL, 0) < 0)
   {
-   // long long free_memory = (int64_t)vm_stats.free_count * (int64_t)page_size;
-    long long used_memory = ((int64_t)vm_stats.active_count + (int64_t)vm_stats.inactive_count + (int64_t)vm_stats.wire_count) *  (int64_t)page_size;
-    //std::cout << RED <<  "free memory RAM: " << RESET << free_memory <<  BOLDYELLOW << "  unused RAM memory: "<<  RESET << used_memory << std::endl;
-    percentageUsed = (used_memory * 100.00) / static_cast<long long>(this->getTotalRamAvailable());
+    throw std::exception();
+  }
+  else
+  {
+    if (
+      KERN_SUCCESS == host_page_size(mach_port, &page_size)
+      && KERN_SUCCESS == host_statistics64(mach_port, HOST_VM_INFO, (host_info64_t)&vm_stats, &count)
+      )
+    {
+    long long free_memory = (int64_t)vm_stats.free_count * (int64_t)page_size;
+    //  long long used_memory = ((int64_t)vm_stats.active_count + (int64_t)vm_stats.inactive_count + (int64_t)vm_stats.wire_count) *  (int64_t)page_size;
+      //std::cout << RED <<  "free memory RAM: " << RESET << free_memory <<  BOLDYELLOW << "  unused RAM memory: "<<  RESET << used_memory << std::endl;
+       percentageUsed = (static_cast<float>(free_memory) * 100.00)/ size;
+    }
   }
   return percentageUsed;
 }

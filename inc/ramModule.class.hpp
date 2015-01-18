@@ -16,6 +16,8 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
+#include <exception>
+#include <sstream>
 #include <string>
 #include <stdint.h>
 #include <unistd.h>
