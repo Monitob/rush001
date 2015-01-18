@@ -19,6 +19,7 @@
 #include "../inc/IMonitorDisplay.interface.hpp"
 #include "../inc/ramModule.class.hpp"
 #include "../inc/CpuModule.class.hpp"
+#include "../inc/CpuModuleIndicator.hpp"
 #include <list>
 #include <unistd.h>
 
@@ -63,8 +64,10 @@ int main(){
 	inter->get_data(ramu);
 
 	CpuModule *cpu_m = new CpuModule("CPU Frequency");
-
+	CpuModuleIndicator *cpu_i = new CpuModuleIndicator("CPU Indicator");
+	std::cout << cpu_i->getCpuLoadAvareage() << std::endl;
 	inter->get_data(cpu_m);
+	inter->get_data(cpu_i);
 	while (runnig)
 	{
 		inter->refresh_data();
