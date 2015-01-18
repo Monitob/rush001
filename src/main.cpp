@@ -30,7 +30,6 @@ int main(){
 	Gkrellm *gk = new Gkrellm();
 	bool		runnig = true;
 	IMonitorDisplay *inter = new TerminalDisplay(gk->getName(), gk->getNodeName(), gk->getSysName(), gk->getNbCore());
-	//std::string Sysname, std::string Nodename, std::string sys, int core
 	//IMonitorDisplay *inter = new GraphicDisplay();
 
 	inter->init();
