@@ -108,7 +108,7 @@ void GraphicDisplay::get_data(IMonitorModule *src){
 
 void GraphicDisplay::refresh(){
 	SDL_BlitSurface( this->back, NULL, this->ScreenSurface, NULL);
-	SDL_UpdateWindowSurface( this->Window );
+	//SDL_UpdateWindowSurface(this->Window );
 }
 
 void GraphicDisplay::print_data(){
@@ -135,7 +135,7 @@ void GraphicDisplay::print_data(){
 		++start;
 	}
 	this->y = 100;
-	SDL_UpdateWindowSurface( this->Window );
+	SDL_UpdateWindowSurface(this->Window);
 }
 
 void GraphicDisplay::print_sliders(){

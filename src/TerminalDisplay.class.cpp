@@ -74,8 +74,8 @@ void TerminalDisplay::refresh(){
 	mvwaddstr(this->win, 2, 13, + this->_Nodename.c_str());
 	mvwaddstr(this->win, 3, 2, "Systeme : ");
 	mvwaddstr(this->win, 3, 12, this->_sys.c_str());
-	mvwaddstr(this->win, 1, 60, "Time : ");
-	mvwaddstr(this->win, 1, 68, this->_clock->get_data().c_str());
+	mvwaddstr(this->win, 3, 40, "Time : ");
+	mvwaddstr(this->win, 3, 48, this->_clock->get_data().c_str());
 	this->draw_line(4);
 	wrefresh(this->win);
 	this->_y = 5;
