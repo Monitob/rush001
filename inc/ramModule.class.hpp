@@ -36,6 +36,7 @@ class RamModule: public Module{
 public:
 	RamModule();
 	RamModule(RamModule const & src);
+	RamModule(std::string const & str);
 	RamModule & operator=(RamModule const & src);
 	virtual ~RamModule();
 	virtual void get_value();

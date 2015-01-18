@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 12:17:47 by jbernabe          #+#    #+#             */
-/*   Updated: 2015/01/18 13:36:24 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 17:10:32 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int main(){
 	IMonitorDisplay *inter = new TerminalDisplay(gk->getName(), gk->getNodeName(), gk->getSysName(), gk->getNbCore());
 	//IMonitorDisplay *inter = new GraphicDisplay();
 	IMonitorModule *ram = new RamModule();
+	IMonitorModule *ramu = new RamModule("RAM Used");
 	inter->init();
 	inter->get_data(ram);
-
+	inter->get_data(ramu);
 	while (runnig)
 	{
 		inter->refresh_data();

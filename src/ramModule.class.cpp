@@ -12,10 +12,16 @@
 
 #include "../inc/ramModule.class.hpp"
 #include <iostream>
+
 RamModule::RamModule(): Module("RAM used", 0, 100) {
 
 this->store_int(this->getRamCurrentlyUser());
 
+}
+
+RamModule::RamModule(std::string const & str){
+	this->_name = str;
+	set_R_value("%");
 }
 
 RamModule::RamModule(RamModule const & src): Module(src){
