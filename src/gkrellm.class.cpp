@@ -12,6 +12,8 @@
 
 #include <iostream>
 #include <exception>
+#include <sstream>
+#include <string>
 #include "gkrellm.class.hpp"
 
 struct utsname unameData;
@@ -30,7 +32,7 @@ Gkrellm::Gkrellm(){
   getTotalRamAvailable();
   getRamCurrentlyUser();
   getAvailableCore();
-  std::cout <<  dateData() << std::endl;
+  std::cout <<  "return of dateData()  " << dateData() << std::endl;
 }
 
 Gkrellm::Gkrellm(Gkrellm const & src){
@@ -132,34 +134,10 @@ http://nadeausoftware.com/articles/2012/09/c_c_tip_how_get_physical_memory_size_
 http://man7.org/linux/man-pages/man2/uname.2.html
 https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man3/sysctlbyname.3.html
 http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/libkern/libkern/sysctl.h
-https://cdn.intrav2.42.fr/pdf/pdf/78/6e6d36b67d95fbca71ab0a85e4e77d2c-rush01.en.pdf 
+https://cdn.intrav2.42.fr/pdf/pdf/78/6e6d36b67d95fbca71ab0a85e4e77d2c-rush01.en.pdf
 *
 */
 
-std::string Gkrellm::dateData() {
-  time_t now = time(0);
-  //std::stringstream dateData;
-
-  tm *ltm = localtime(&now);
-
-  //print various components of tm structure.
-  std::cout << "Year: "<< 1900 + ltm->tm_year << std::endl;
-  std::cout << "Month: "<< 1 + ltm->tm_mon<< std::endl;
-  std::cout << "Day: "<<  ltm->tm_mday << std::endl;
-  std::cout << "Time: "<< 1 + ltm->tm_hour << ":";
-  std::cout << 1 + ltm->tm_min << ":";
-  std::cout << 1 + ltm->tm_sec << std::endl;
-  // dateData +=  "Year: ";
-  //dateData << 1900 + ltm->tm_year;
-  // dateData += " Month: ";
-  // dateData += (1 + ltm->tm_mon);
-  // dateData += "Day: ";
-  // dateData += ltm->tm_mday;
-  // dateData += "Time: " + (1 + ltm->tm_hour);
-  // dateData += ":" + (1 + ltm->tm_min);
-  // dateData += ":" + (1 + ltm->tm_sec);
-  return ("test");
-}
 
 void Gkrellm::setName(){
   #ifdef _WIN32

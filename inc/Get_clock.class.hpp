@@ -21,13 +21,8 @@ public:
 	Get_clock();
 	Get_clock(int min, int max, int value);
 	virtual ~Get_clock();
-	virtual void get_value() {
-		this->store_int(2500);
-		this->_name = "clock";
-		this->set_R_value("M");
-		this->set_L_value("toto");
-	};
+	virtual void get_value();
+	
 };
 
 #endif /* !GET_CLOCK_CLASS_HPP*/
-
