@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 20:05:19 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 13:48:58 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 16:41:06 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,7 +202,7 @@ void TerminalDisplay::fill(int y, int size, int amount)
 		if (i < amount)
 			mvwaddch(this->win, y , i + x, '#');
 		else
-			mvwaddch(this->win, y , i + x, '!');
+			mvwaddch(this->win, y , i + x, ' ');
 	}
 }
 
