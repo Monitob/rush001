@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gkrellm.class.hpp                                  :+:      :+:    :+:   */
+/*   ramModule.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GKRELLM_CLASS_HPP
-#define GKRELLM_CLASS_HPP
+#ifndef RAMMODULE_CLASS_HPP
+# define RAMMODULE_CLASS_HPP
 
 #include <stdexcept>
 #include <iostream>
@@ -27,18 +27,19 @@
 #include <sys/sysctl.h>
 #include <sys/utsname.h>
 #include <ctime>
+#include "Module.class.hpp"
 
-
-class RamModule{
+class RamModule: public Module{
 
 public:
-  RamModule();
-  RamModule(RamModule const &  src);
-  RamModule & operator=(RamModule const & src);
-  virtual ~RamModule();
-
-  int getRamCurrentlyUser();
+	RamModule();
+	RamModule(RamModule const & src);
+	RamModule & operator=(RamModule const & src);
+	virtual ~RamModule();
+	virtual void get_value();
+	int getRamCurrentlyUser();
+	u_int getTotalRamAvailable();
 
 };
 
-#endif
+#endif /* !RAMMODULE_CLASS_HPP */

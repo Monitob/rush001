@@ -16,6 +16,7 @@
 #include "../inc/TerminalDisplay.class.hpp"
 #include "../inc/GraphicDisplay.class.hpp"
 #include "../inc/IMonitorModule.interface.hpp"
+#include "../inc/ramModule.class.hpp"
 #include <list>
 #include <unistd.h>
 
@@ -26,14 +27,16 @@ void interface(IMonitorModule *toto)
 
 int main(){
 	/*std::cout << "coucouc" << std::endl;*/
-	Get_clock *tata = new Get_clock();
+	//Get_clock *tata = new Get_clock();
+
 	Gkrellm *gk = new Gkrellm();
 	bool		runnig = true;
 	IMonitorDisplay *inter = new TerminalDisplay(gk->getName(), gk->getNodeName(), gk->getSysName(), gk->getNbCore());
 	//IMonitorDisplay *inter = new GraphicDisplay();
-
+	IMonitorModule *ram = new RamModule();
 	inter->init();
-	inter->get_data(tata);
+	inter->get_data(ram);
+
 	while (runnig)
 	{
 		inter->refresh_data();

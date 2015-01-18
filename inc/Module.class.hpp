@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 18:17:35 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 07:04:23 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 15:46:41 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class	Module: public IMonitorModule
 public:
 	Module();
 	Module(int min, int max, int value);
+	Module(std::string name, int min, int max);
 	virtual ~Module();
 	virtual std::string get_data();
 	virtual std::string get_name();

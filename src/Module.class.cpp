@@ -33,6 +33,11 @@ Module::Module(int min, int max, int value): _name("JAMES"), _is_slider(true), _
 	this->store_int(value);
 }
 
+Module::Module(std::string name, int min, int max): _name(name), _is_slider(true), _min(min), _max(max)
+{
+
+}
+
 Module::~Module()
 {
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RamModule.class.cpp                                :+:      :+:    :+:   */
+/*   ramModule.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,27 +11,28 @@
 /* ************************************************************************** */
 
 #include "../inc/ramModule.class.hpp"
+#include <iostream>
+RamModule::RamModule(): Module("RAM used", 0, 100) {
 
-
-RamModule::RamModule(): _is_slider(true), _name("RAM used"), _min(0), _max(100){
-//max ram available
-//ram user in store_int()
-store_int(getRamCurrentLyUser());
+this->store_int(this->getRamCurrentlyUser());
 
 }
 
-RamModule::RamModule(std::string str)
-{
-  this->store_string(str);
+RamModule::RamModule(RamModule const & src): Module(src){
+	*this = src;
 }
 
+RamModule & RamModule::operator=(RamModule const & src){
+	(void)src;
+	return *this;
+}
 
 void RamModule::get_value(){
-  store_int(getRamCurrentLyUser());
-  
+	store_int(this->getRamCurrentlyUser());
+	std::cout << this->get_data() << std::endl;
 }
 
-int Gkrellm::getRamCurrentlyUser(){
+int RamModule::getRamCurrentlyUser(){
   /*
   * this function has to return a pair vector to get free_memory and used_memory
   * or only return free memory
@@ -52,10 +53,10 @@ int Gkrellm::getRamCurrentlyUser(){
     && KERN_SUCCESS == host_statistics64(mach_port, HOST_VM_INFO, (host_info64_t)&vm_stats, &count)
     )
   {
-    long long free_memory = (int64_t)vm_stats.free_count * (int64_t)page_size;
+   // long long free_memory = (int64_t)vm_stats.free_count * (int64_t)page_size;
     long long used_memory = ((int64_t)vm_stats.active_count + (int64_t)vm_stats.inactive_count + (int64_t)vm_stats.wire_count) *  (int64_t)page_size;
     //std::cout << RED <<  "free memory RAM: " << RESET << free_memory <<  BOLDYELLOW << "  unused RAM memory: "<<  RESET << used_memory << std::endl;
-    percentageUsed = (used_memory * 100.00) / static_cast<long long>getTotalRAmAvailable;
+    percentageUsed = (used_memory * 100.00) / static_cast<long long>(this->getTotalRamAvailable());
   }
   return percentageUsed;
 }
@@ -89,7 +90,7 @@ int Gkrellm::getRamCurrentlyUser(){
 //   return percentageUsed;
 // }
 
-u_int Gkrellm::getTotalRamAvailable(){
+u_int RamModule::getTotalRamAvailable(){
 
   int mib[2] = { CTL_HW, HW_MEMSIZE };
   u_int namelen = sizeof(mib) / sizeof(mib[0]);
@@ -102,15 +103,11 @@ u_int Gkrellm::getTotalRamAvailable(){
   }
   else
   {
-    std::cout << "Total ram:   " << size << " bytes"<< std::endl;
+    //std::cout << "Total ram:   " << size << " bytes"<< std::endl;
     return size;
   }
 }
 
-RamModule & RamModule::operator=(RamModule & src){
-  (void)src;
-  return *this;
-}
 
 RamModule::~RamModule()
 {
