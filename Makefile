@@ -5,7 +5,7 @@ HEADER	= ./inc/
 SRCDIR	= ./src/
 OBJDIR	= ./obj/
 CFLAGS	= -lncurses -I ~/.brew/Cellar/sdl2/2.0.3/include -L ~/.brew/Cellar/sdl2/2.0.3/lib -lSDL2 -Wall -Wextra -Werror -I$(HEADER)
-SRC			= $(SRCDIR)main.cpp gkrellm.class.cpp Module.class.cpp Get_clock.class.cpp GraphicDisplay.class.cpp TerminalDisplay.class.cpp ramModule.class.cpp
+SRC			= $(SRCDIR)main.cpp gkrellm.class.cpp Module.class.cpp Get_clock.class.cpp GraphicDisplay.class.cpp TerminalDisplay.class.cpp ramModule.class.cpp CpuModule.class.cpp CpuModuleIndicator.class.cpp 
 OBJ			= $(addprefix $(OBJDIR),$(notdir $(SRC:.cpp=.o)))
 
 all:			$(NAME)
