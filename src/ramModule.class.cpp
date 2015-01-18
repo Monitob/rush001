@@ -80,6 +80,7 @@ int RamModule::getRamCurrentlyUser(){
       && KERN_SUCCESS == host_statistics64(mach_port, HOST_VM_INFO, (host_info64_t)&vm_stats, &count)
       )
     {
+			
     // long long free_memory = (int64_t)vm_stats.free_count * (int64_t)page_size;
      long long used_memory = ((int64_t)vm_stats.active_count + (int64_t)vm_stats.inactive_count + (int64_t)vm_stats.wire_count) *  (int64_t)page_size;
       //std::cout << RED <<  "free memory RAM: " << RESET << free_memory <<  BOLDYELLOW << "  unused RAM memory: "<<  RESET << used_memory << std::endl;
