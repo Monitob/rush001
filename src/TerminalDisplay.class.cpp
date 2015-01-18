@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 20:05:19 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 22:26:57 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 22:30:08 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void TerminalDisplay::refresh(){
 
 	std::stringstream value_of_data;
 	value_of_data << this->_nb_core;
-	mvwaddstr(this->win, 1, 45, "Cores : ");
-	mvwaddstr(this->win, 1, 53, value_of_data.str().c_str());
+	mvwaddstr(this->win, 1, 65, "Cores : ");
+	mvwaddstr(this->win, 1, 73, value_of_data.str().c_str());
 	this->draw_line(4);
 	wrefresh(this->win);
 	this->_y = 5;
