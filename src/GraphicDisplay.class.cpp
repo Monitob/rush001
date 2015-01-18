@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 20:12:27 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 12:14:02 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 13:36:43 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,18 @@ void GraphicDisplay::init(){
 
 }
 
+bool GraphicDisplay::ubreak(){
+	SDL_Event e;
+	SDL_PollEvent( &e );
+	if (e.type == SDL_QUIT)
+		return false;
+	if (e.type == SDL_KEYDOWN)
+	{
+		if (e.key.keysym.sym == 'q')
+			return false;
+	}
+	return true;
+}
 
 void GraphicDisplay::destroy(){
 		//destroy sdl2
@@ -94,18 +106,14 @@ void GraphicDisplay::get_data(IMonitorModule *src){
 }
 
 void GraphicDisplay::refresh(){
-	std::cout << "31 !" << this->back << " | " <<  this->ScreenSurface <<std::endl;
 	SDL_BlitSurface( this->back, NULL, this->ScreenSurface, NULL);
-	std::cout << "32 !" << std::endl;
 	SDL_UpdateWindowSurface( this->Window );
-	std::cout << "33 !" << std::endl;
 }
 
 void GraphicDisplay::print_data(){
 	if (this->modules.size() == 0)
 		return;
 	this->print_sliders();
-	std::cout << this->y << "y !" << std::endl;
 	int x = 20;
 	IMonitorModule *current;
 	std::list<IMonitorModule *>::iterator start = this->modules.begin();
@@ -125,8 +133,7 @@ void GraphicDisplay::print_data(){
 		}
 		++start;
 	}
-	this->y += 20;
-
+	this->y = 100;
 	SDL_UpdateWindowSurface( this->Window );
 }
 

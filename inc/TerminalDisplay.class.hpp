@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 20:05:08 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 07:18:33 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 13:18:07 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ public:
 	virtual void	print_sliders();
 	void			draw_line(int y);
 	void			fill(int y, int size, int amount);
+	virtual bool	ubreak();
 
 private:
 	bool is_init;

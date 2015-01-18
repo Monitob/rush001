@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 20:12:20 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 12:09:41 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 13:20:28 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ public:
 	virtual void	print_data();
 	virtual void	print_sliders();
 	void			print_balls(int ball_nb);
+	virtual bool	ubreak();
+
 
 private:
 	std::list<IMonitorModule *> modules;

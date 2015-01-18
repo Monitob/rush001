@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 20:05:19 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 07:05:26 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 13:48:58 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ void TerminalDisplay::init(){
 	is_init = true;
 	this->win = newwin(50, 100, 0, 0);
 	this->refresh();
+	nodelay(stdscr, TRUE);
+	curs_set(0);
+}
+
+bool TerminalDisplay::ubreak(){
+	return getch() != 'q';
 }
 
 void TerminalDisplay::refresh(){
@@ -79,6 +85,7 @@ void TerminalDisplay::refresh_data(){
 		current->get_value();
 		++start;
 	}
+	this->_clock->get_value();
 }
 
 void TerminalDisplay::print_data(){
