@@ -6,7 +6,7 @@
 /*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 20:12:20 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/18 07:13:32 by sbres            ###   ########.fr       */
+/*   Updated: 2015/01/18 12:09:41 by sbres            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include "IMonitorDisplay.interface.hpp"
 # include <list>
+# include <SDL2/SDL.h>
 
 class	GraphicDisplay: public IMonitorDisplay
 {
@@ -32,6 +33,8 @@ public:
 	virtual void	get_data(IMonitorModule *src);
 	virtual void	print_data();
 	virtual void	print_sliders();
+	void			print_balls(int ball_nb);
+
 private:
 	std::list<IMonitorModule *> modules;
 	int				_y;
@@ -40,6 +43,14 @@ private:
 	std::string		_sys;
 	int				_nb_core;
 	IMonitorModule	*_clock;
+	SDL_Window*		Window;
+	bool			init_suc;
+	SDL_Surface		*bar;
+	SDL_Surface		*point;
+	SDL_Surface		*back;
+	SDL_Surface		*container;
+	SDL_Surface		*ScreenSurface;
+	int				y;
 };
 
 #endif /* !GRAPHICDISPLAY_INTERFACE_HPP */
