@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctime>
 #include "../inc/Get_clock.class.hpp"
 
 Get_clock::Get_clock()
@@ -53,7 +52,8 @@ void Get_clock::get_value(){
 }
 
 Get_clock & Get_clock::operator=(Get_clock & src){
-  this->store_string(src.get_value());
+  (void)src;
+  return *this;
 }
 
 Get_clock::~Get_clock()

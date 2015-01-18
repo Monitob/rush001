@@ -27,15 +27,11 @@ void interface(IMonitorModule *toto)
 int main(){
 	/*std::cout << "coucouc" << std::endl;*/
 	Get_clock *tata = new Get_clock();
-	Get_clock *tutu = new Get_clock(0, 1000, 500);
-	Get_clock *titi = new Get_clock(500, 1000, 1000);
 	bool		runnig = true;
 	//IMonitorDisplay *inter = new TerminalDisplay();
 	IMonitorDisplay *inter = new GraphicDisplay();
 
 	inter->init();
-	inter->get_data(tutu);
-	inter->get_data(titi);
 	inter->get_data(tata);
 	while (runnig)
 	{

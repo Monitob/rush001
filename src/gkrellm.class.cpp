@@ -138,6 +138,43 @@ https://cdn.intrav2.42.fr/pdf/pdf/78/6e6d36b67d95fbca71ab0a85e4e77d2c-rush01.en.
 *
 */
 
+template <typename T>
+std::string NumberToString ( T Number )
+{
+  std::ostringstream ss;
+  ss << Number;
+  return ss.str();
+}
+
+std::string Gkrellm::dateData() {
+  time_t now = time(0);
+  std::string dateData = new char[100];
+
+  tm *ltm = localtime(&now);
+
+  //print various components of tm structure.
+  std::cout << "Year: "<< 1900 + ltm->tm_year << std::endl;
+  std::cout << "Month: "<< (1 + ltm->tm_mon)<< std::endl;
+  std::cout << "Day: "<<  ltm->tm_mday << std::endl;
+  std::cout << "Time: "<< 1 + ltm->tm_hour << ":";
+  std::cout << (1 + ltm->tm_min) << ":";
+  std::cout << (1 + ltm->tm_sec) << std::endl;
+  dateData += "Year: ";
+  dateData += NumberToString(1900 + ltm->tm_year);
+  dateData +=  " Month:  ";
+  dateData += NumberToString(1 + ltm->tm_mon);
+  dateData += " Day: ";
+  dateData += NumberToString(ltm->tm_mday);
+  dateData += " Time: ";
+  dateData += NumberToString(1 + ltm->tm_hour);
+  dateData += " : ";
+  dateData += NumberToString(1 + ltm->tm_min);
+  dateData += " : ";
+  dateData += NumberToString(1 + ltm->tm_sec);
+  return (dateData);
+}
+
+
 
 void Gkrellm::setName(){
   #ifdef _WIN32
