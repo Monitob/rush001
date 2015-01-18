@@ -51,10 +51,13 @@ class Gkrellm{
 public:
 	Gkrellm();
 	Gkrellm(Gkrellm const &  src);
-	std::string getName() const;
 	Gkrellm & operator=(Gkrellm const & f);
 	void setName();
 	virtual ~Gkrellm();
+	std::string getNodeName();
+	std::string getSysName();
+	u_int getNbCore();
+	std::string getName() const;
 
 private:
 	std::string _name;
@@ -62,6 +65,9 @@ private:
 	void getRamCurrentlyUser();
 	u_int getAvailableCore();
 	std::string dateData();
+	std::string _nodeName;
+	u_int _nbCore;
+	std::string _sysName;
 
 
 

@@ -24,11 +24,15 @@ Gkrellm::Gkrellm(){
   this->setName();
 
   std::cout << GREEN << "Welcome to the Gkrellm. Best version 2.0.0.3000!" << RESET << std::endl;
-  std::cout << "system name:" << unameData.sysname << std::endl;
-  std::cout << "node name   :"<< unameData.nodename << std::endl;
-  std::cout << "release    :" << unameData.release << std::endl;
-  std::cout << "version    :" << unameData.version << std::endl;
-  std::cout << "machine    :" << unameData.machine << std::endl;
+    _nodeName = unameData.nodename;
+    _nbCore = getAvailableCore();
+    _sysName = unameData.sysname;
+
+  //std::cout << "system name:" << unameData.sysname << std::endl;
+  //std::cout << "node name   :"<< unameData.nodename << std::endl;
+  // std::cout << "release    :" << unameData.release << std::endl;
+  // std::cout << "version    :" << unameData.version << std::endl;
+  // std::cout << "machine    :" << unameData.machine << std::endl;
   getTotalRamAvailable();
   getRamCurrentlyUser();
   getAvailableCore();
@@ -39,6 +43,7 @@ Gkrellm::Gkrellm(Gkrellm const & src){
     *this = src;
 }
 
+
 Gkrellm::~Gkrellm(){
 }
 
@@ -46,6 +51,18 @@ Gkrellm & Gkrellm::operator=(Gkrellm const& f){
 
   this->_name = f.getName();
   return (*this);
+}
+
+std::string  Gkrellm::getNodeName(){
+  return _nodeName;
+}
+
+std::string Gkrellm::getSysName(){
+  return _sysName;
+}
+
+u_int Gkrellm::getNbCore(){
+  return _nbCore;
 }
 
 std::string Gkrellm::getName() const{

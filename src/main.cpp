@@ -27,9 +27,11 @@ void interface(IMonitorModule *toto)
 int main(){
 	/*std::cout << "coucouc" << std::endl;*/
 	Get_clock *tata = new Get_clock();
+	Gkrellm *gk = new Gkrellm();
 	bool		runnig = true;
-	//IMonitorDisplay *inter = new TerminalDisplay();
-	IMonitorDisplay *inter = new GraphicDisplay();
+	IMonitorDisplay *inter = new TerminalDisplay(gk->getName(), gk->getNodeName(), gk->getSysName(), gk->getNbCore());
+	//std::string Sysname, std::string Nodename, std::string sys, int core
+	//IMonitorDisplay *inter = new GraphicDisplay();
 
 	inter->init();
 	inter->get_data(tata);
