@@ -21,6 +21,7 @@ public:
 	Module();
 	Module(int min, int max, int value);
 	Module(std::string name, int min, int max);
+	Module(std::string name);
 	virtual ~Module();
 	virtual std::string get_data();
 	virtual std::string get_name();

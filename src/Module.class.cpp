@@ -37,6 +37,10 @@ Module::Module(std::string name, int min, int max): _name(name), _is_slider(true
 {
 
 }
+Module::Module(std::string name): _name(name), _is_slider(false)
+{
+
+}
 
 Module::~Module()
 {
